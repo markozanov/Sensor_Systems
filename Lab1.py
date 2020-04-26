@@ -12,11 +12,11 @@ measurements_freq_2 = list()
 measurements_freq_3 = list()
 
 
-for i in range (0, len(measurements), 2):
+for i in range(0, len(measurements), 2):
     measurements_freq_2.append(measurements[i])
 
 
-for i in range (0, len(measurements), 3):
+for i in range(0, len(measurements), 3):
     measurements_freq_3.append(measurements[i])
 
 
@@ -109,16 +109,16 @@ def MSE(f_measurements, f_thresholds, MA):
 ################
 
 
-# pyplot.subplot(xlabel='Threshold', ylabel='% of reduced transmissions  [Frequency - Every 3rd day]',
-#                title='Data for NYC daily average high temperatures for 2020')
-# pyplot.plot(thresholds, reduced_transmissions(measurements_freq_3, thresholds, 1),
-#             color='red', label='Moving Average - 1', marker='.')
-# pyplot.plot(thresholds, reduced_transmissions(measurements_freq_3, thresholds, 2),
-#             color='green', label='Moving Average - 2', marker='.')
-# pyplot.plot(thresholds, reduced_transmissions(measurements_freq_3, thresholds, 3),
-#             color='blue', label='Moving Average - 3', marker='.')
-# pyplot.legend(loc='best')
-# pyplot.show()
+pyplot.subplot(xlabel='Threshold', ylabel='% of reduced transmissions  [Frequency - Every 3rd day]',
+               title='Data for NYC daily average high temperatures for 2020')
+pyplot.plot(thresholds, reduced_transmissions(measurements_freq_3, thresholds, 1),
+            color='red', label='Moving Average - 1', marker='.')
+pyplot.plot(thresholds, reduced_transmissions(measurements_freq_3, thresholds, 2),
+            color='green', label='Moving Average - 2', marker='.')
+pyplot.plot(thresholds, reduced_transmissions(measurements_freq_3, thresholds, 3),
+            color='blue', label='Moving Average - 3', marker='.')
+pyplot.legend(loc='best')
+pyplot.show()
 
 
 #########
