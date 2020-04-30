@@ -1,4 +1,5 @@
 from numpy import mean
+import numpy as NP
 from matplotlib import pyplot
 
 
@@ -35,7 +36,7 @@ thresholds_humid = [0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0]
 
 
 def reduced_transmissions(f_measurements_temp, f_measurements_humid, f_thresholds_temp, f_thresholds_humid, MA):
-    counters_list = list()
+    counters_list = {}
     for threshold in f_thresholds_temp:
         for threshold_h in f_thresholds_humid:
             counter = 0
@@ -59,12 +60,12 @@ def reduced_transmissions(f_measurements_temp, f_measurements_humid, f_threshold
                     predictions_temp.append(next_prediction_temp)
                     predictions_humid.append(next_prediction_humid)
 
-            counters_list.append(counter / len(f_measurements_temp) * 100.0)
+            counters_list.update({str(threshold) + ';' + str(threshold_h): counter / len(f_measurements_temp) * 100.0})
     return counters_list
 
 
 def MSE(f_measurements_temp, f_measurements_humid, f_thresholds_temp, f_thresholds_humid, MA):
-    errors_list = list()
+    errors_list = {}
 
     for threshold in f_thresholds_temp:
         for threshold_h in f_thresholds_humid:
@@ -84,50 +85,93 @@ def MSE(f_measurements_temp, f_measurements_humid, f_thresholds_temp, f_threshol
 
                 if abs(curr_error_temp) > threshold and abs(curr_error_humid) > threshold_h:
                     predictions_temp.append(f_measurements_temp[i])
-                    predictions_humid.append(f_thresholds_humid[i])
-                    thresh_errors.append(pow(((curr_error_temp + curr_error_humid)/2), 2))
+                    predictions_humid.append(f_measurements_humid[i])
+                    thresh_errors.append(pow(curr_error_humid, 2) + pow(curr_error_temp, 2))
                 else:
                     predictions_temp.append(next_prediction_temp)
 
-            errors_list.append(mean(thresh_errors))
+            errors_list.update({str(threshold) + ';' + str(threshold_h): mean(thresh_errors)})
 
     return errors_list
 
+
+def plotting_function_rt(f_measurements_temp, f_measurements_humid, f_thresholds_temp, f_thresholds_humid, MA, F):
+    result = reduced_transmissions(f_measurements_temp, f_measurements_humid, f_thresholds_temp, f_thresholds_humid, MA)
+    x = NP.array(list(map(lambda k: float(k.split(';')[0]), result.keys())))
+    y = NP.array(list(map(lambda k: float(k.split(';')[1]), result.keys())))
+    val = NP.array(list(result.values()))
+
+    pyplot.xticks(NP.arange(NP.amin(x), NP.ceil(NP.amax(x)) + 1))
+    pyplot.yticks(NP.arange(NP.amin(y), NP.ceil(NP.amax(y)) + 1))
+    pyplot.scatter(x, y, c=val, s=100)
+    pyplot.title(f'% reduced transmissions - Moving Average ' + str(MA) + ' Frequency Every ' + str(F) + ' day')
+    pyplot.xlabel('Temperature thresholds')
+    pyplot.ylabel('Humidity thresholds')
+    pyplot.colorbar()
+    pyplot.show()
+
+
+def plotting_function_mse(f_measurements_temp, f_measurements_humid, f_thresholds_temp, f_thresholds_humid, MA, F):
+    result = MSE(f_measurements_temp, f_measurements_humid, f_thresholds_temp, f_thresholds_humid, MA)
+    x = NP.array(list(map(lambda k: float(k.split(';')[0]), result.keys())))
+    y = NP.array(list(map(lambda k: float(k.split(';')[1]), result.keys())))
+    val = NP.array(list(result.values()))
+
+    pyplot.xticks(NP.arange(NP.amin(x), NP.ceil(NP.amax(x)) + 1))
+    pyplot.yticks(NP.arange(NP.amin(y), NP.ceil(NP.amax(y)) + 1))
+    pyplot.scatter(x, y, c=val, s=100)
+    pyplot.title(f'MSE - Moving Average ' + str(MA) + ' Frequency Every ' + str(F) + ' day')
+    pyplot.xlabel('Temperature thresholds')
+    pyplot.ylabel('Humidity thresholds')
+    pyplot.colorbar()
+    pyplot.show()
 
 
 ################
 # % REDUCED TRANSMISSIONS - FREQUENCY 1
 ################
 
-
-
+plotting_function_rt(measurements_temp, measurements_humid, thresholds_temp, thresholds_humid, 1, 1)
+plotting_function_rt(measurements_temp, measurements_humid, thresholds_temp, thresholds_humid, 2, 1)
+plotting_function_rt(measurements_temp, measurements_humid, thresholds_temp, thresholds_humid, 3, 1)
 
 ################
 # % REDUCED TRANSMISSIONS - FREQUENCY 2
 ################
 
-
+plotting_function_rt(measurements_temp_freq_2, measurements_humid_freq_2, thresholds_temp, thresholds_humid, 1, 2)
+plotting_function_rt(measurements_temp_freq_2, measurements_humid_freq_2, thresholds_temp, thresholds_humid, 2, 2)
+plotting_function_rt(measurements_temp_freq_2, measurements_humid_freq_2, thresholds_temp, thresholds_humid, 3, 2)
 
 
 ################
 # % REDUCED TRANSMISSIONS - FREQUENCY 3
 ################
 
-
+plotting_function_rt(measurements_temp_freq_3, measurements_humid_freq_3, thresholds_temp, thresholds_humid, 1, 3)
+plotting_function_rt(measurements_temp_freq_3, measurements_humid_freq_3, thresholds_temp, thresholds_humid, 2, 3)
+plotting_function_rt(measurements_temp_freq_3, measurements_humid_freq_3, thresholds_temp, thresholds_humid, 3, 3)
 
 #########
 # MSE - FREQUENCY 1
 #########
 
-
+plotting_function_mse(measurements_temp, measurements_humid, thresholds_temp, thresholds_humid, 1, 1)
+plotting_function_mse(measurements_temp, measurements_humid, thresholds_temp, thresholds_humid, 2, 1)
+plotting_function_mse(measurements_temp, measurements_humid, thresholds_temp, thresholds_humid, 3, 1)
 
 #########
 # MSE - FREQUENCY 2
 #########
 
-
+plotting_function_mse(measurements_temp_freq_2, measurements_humid_freq_2, thresholds_temp, thresholds_humid, 1, 2)
+plotting_function_mse(measurements_temp_freq_2, measurements_humid_freq_2, thresholds_temp, thresholds_humid, 2, 2)
+plotting_function_mse(measurements_temp_freq_2, measurements_humid_freq_2, thresholds_temp, thresholds_humid, 3, 2)
 
 #########
 # MSE - FREQUENCY 3
 #########
 
+plotting_function_mse(measurements_temp_freq_3, measurements_humid_freq_3, thresholds_temp, thresholds_humid, 1, 3)
+plotting_function_mse(measurements_temp_freq_3, measurements_humid_freq_3, thresholds_temp, thresholds_humid, 2, 3)
+plotting_function_mse(measurements_temp_freq_3, measurements_humid_freq_3, thresholds_temp, thresholds_humid, 3, 3)

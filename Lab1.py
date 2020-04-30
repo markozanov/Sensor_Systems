@@ -75,16 +75,16 @@ def MSE(f_measurements, f_thresholds, MA):
 ################
 
 
-# pyplot.subplot(xlabel='Threshold', ylabel='% of reduced transmissions  [Frequency - Every day]',
-#                title='Data for NYC daily average high temperatures for 2020')
-# pyplot.plot(thresholds, reduced_transmissions(measurements, thresholds, 1),
-#             color='red', label='Moving Average - 1', marker='.')
-# pyplot.plot(thresholds, reduced_transmissions(measurements, thresholds, 2),
-#             color='green', label='Moving Average - 2', marker='.')
-# pyplot.plot(thresholds, reduced_transmissions(measurements, thresholds, 3),
-#             color='blue', label='Moving Average - 3', marker='.')
-# pyplot.legend(loc='best')
-# pyplot.show()
+pyplot.subplot(xlabel='Threshold', ylabel='% of reduced transmissions  [Frequency - Every day]',
+               title='Data for NYC daily average high temperatures for 2020')
+pyplot.plot(thresholds, reduced_transmissions(measurements, thresholds, 1),
+            color='red', label='Moving Average - 1', marker='.')
+pyplot.plot(thresholds, reduced_transmissions(measurements, thresholds, 2),
+            color='green', label='Moving Average - 2', marker='.')
+pyplot.plot(thresholds, reduced_transmissions(measurements, thresholds, 3),
+            color='blue', label='Moving Average - 3', marker='.')
+pyplot.legend(loc='best')
+pyplot.show()
 
 
 ################
@@ -92,16 +92,16 @@ def MSE(f_measurements, f_thresholds, MA):
 ################
 
 
-# pyplot.subplot(xlabel='Threshold', ylabel='% of reduced transmissions  [Frequency - Every 2nd day]',
-#                title='Data for NYC daily average high temperatures for 2020')
-# pyplot.plot(thresholds, reduced_transmissions(measurements_freq_2, thresholds, 1),
-#             color='red', label='Moving Average - 1', marker='.')
-# pyplot.plot(thresholds, reduced_transmissions(measurements_freq_2, thresholds, 2),
-#             color='green', label='Moving Average - 2', marker='.')
-# pyplot.plot(thresholds, reduced_transmissions(measurements_freq_2, thresholds, 3),
-#             color='blue', label='Moving Average - 3', marker='.')
-# pyplot.legend(loc='best')
-# pyplot.show()
+pyplot.subplot(xlabel='Threshold', ylabel='% of reduced transmissions  [Frequency - Every 2nd day]',
+               title='Data for NYC daily average high temperatures for 2020')
+pyplot.plot(thresholds, reduced_transmissions(measurements_freq_2, thresholds, 1),
+            color='red', label='Moving Average - 1', marker='.')
+pyplot.plot(thresholds, reduced_transmissions(measurements_freq_2, thresholds, 2),
+            color='green', label='Moving Average - 2', marker='.')
+pyplot.plot(thresholds, reduced_transmissions(measurements_freq_2, thresholds, 3),
+            color='blue', label='Moving Average - 3', marker='.')
+pyplot.legend(loc='best')
+pyplot.show()
 
 
 ################
@@ -126,16 +126,16 @@ pyplot.show()
 #########
 
 
-# pyplot.subplot(xlabel='Threshold', ylabel='MSE [Frequency - Every day]',
-#                title='Data for NYC daily average high temperatures for 2020')
-# pyplot.plot(thresholds, MSE(measurements, thresholds, 1),
-#             color='red', label='Moving Average - 1', marker='.')
-# pyplot.plot(thresholds, MSE(measurements, thresholds, 2),
-#             color='green', label='Moving Average - 2', marker='.')
-# pyplot.plot(thresholds, MSE(measurements, thresholds, 3),
-#             color='blue', label='Moving Average - 3', marker='.')
-# pyplot.legend(loc='best')
-# pyplot.show()
+pyplot.subplot(xlabel='Threshold', ylabel='MSE [Frequency - Every day]',
+               title='Data for NYC daily average high temperatures for 2020')
+pyplot.plot(thresholds, MSE(measurements, thresholds, 1),
+            color='red', label='Moving Average - 1', marker='.')
+pyplot.plot(thresholds, MSE(measurements, thresholds, 2),
+            color='green', label='Moving Average - 2', marker='.')
+pyplot.plot(thresholds, MSE(measurements, thresholds, 3),
+            color='blue', label='Moving Average - 3', marker='.')
+pyplot.legend(loc='best')
+pyplot.show()
 
 
 #########
@@ -143,16 +143,16 @@ pyplot.show()
 #########
 
 
-# pyplot.subplot(xlabel='Threshold', ylabel='MSE [Frequency - Every 2nd day]',
-#                title='Data for NYC daily average high temperatures for 2020')
-# pyplot.plot(thresholds, MSE(measurements_freq_2, thresholds, 1),
-#             color='red', label='Moving Average - 1', marker='.')
-# pyplot.plot(thresholds, MSE(measurements_freq_2, thresholds, 2),
-#             color='green', label='Moving Average - 2', marker='.')
-# pyplot.plot(thresholds, MSE(measurements_freq_2, thresholds, 3),
-#             color='blue', label='Moving Average - 3', marker='.')
-# pyplot.legend(loc='best')
-# pyplot.show()
+pyplot.subplot(xlabel='Threshold', ylabel='MSE [Frequency - Every 2nd day]',
+               title='Data for NYC daily average high temperatures for 2020')
+pyplot.plot(thresholds, MSE(measurements_freq_2, thresholds, 1),
+            color='red', label='Moving Average - 1', marker='.')
+pyplot.plot(thresholds, MSE(measurements_freq_2, thresholds, 2),
+            color='green', label='Moving Average - 2', marker='.')
+pyplot.plot(thresholds, MSE(measurements_freq_2, thresholds, 3),
+            color='blue', label='Moving Average - 3', marker='.')
+pyplot.legend(loc='best')
+pyplot.show()
 
 
 #########
@@ -160,13 +160,13 @@ pyplot.show()
 #########
 
 
-# pyplot.subplot(xlabel='Threshold', ylabel='MSE [Frequency - Every 3rd day]',
-#                title='Data for NYC daily average high temperatures for 2020')
-# pyplot.plot(thresholds, MSE(measurements_freq_3, thresholds, 1),
-#             color='red', label='Moving Average - 1', marker='.')
-# pyplot.plot(thresholds, MSE(measurements_freq_3, thresholds, 2),
-#             color='green', label='Moving Average - 2', marker='.')
-# pyplot.plot(thresholds, MSE(measurements_freq_3, thresholds, 3),
-#             color='blue', label='Moving Average - 3', marker='.')
-# pyplot.legend(loc='best')
-# pyplot.show()
+pyplot.subplot(xlabel='Threshold', ylabel='MSE [Frequency - Every 3rd day]',
+               title='Data for NYC daily average high temperatures for 2020')
+pyplot.plot(thresholds, MSE(measurements_freq_3, thresholds, 1),
+            color='red', label='Moving Average - 1', marker='.')
+pyplot.plot(thresholds, MSE(measurements_freq_3, thresholds, 2),
+            color='green', label='Moving Average - 2', marker='.')
+pyplot.plot(thresholds, MSE(measurements_freq_3, thresholds, 3),
+            color='blue', label='Moving Average - 3', marker='.')
+pyplot.legend(loc='best')
+pyplot.show()
