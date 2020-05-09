@@ -160,6 +160,7 @@ plotting_function_mse(measurements_temp, measurements_humid, thresholds_temp, th
 plotting_function_mse(measurements_temp, measurements_humid, thresholds_temp, thresholds_humid, 2, 1)
 plotting_function_mse(measurements_temp, measurements_humid, thresholds_temp, thresholds_humid, 3, 1)
 
+
 #########
 # MSE - FREQUENCY 2
 #########
